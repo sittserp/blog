@@ -1,7 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from '../../state/BlogProvider';
+import { deleteBlog } from '../../actions/blogActions';
 
 const Blog = ({ title, body }) => {
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(deleteBlog(title));
+  };
 
   return (
     <>
@@ -9,6 +16,7 @@ const Blog = ({ title, body }) => {
         <dt>{title}</dt>
         <dd>{body}</dd>
       </dl>
+      <button onClick={handleClick}>Delete</button>
     </>
   );
 };

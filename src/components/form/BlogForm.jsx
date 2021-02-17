@@ -14,7 +14,6 @@ const BlogForm = () => {
     dispatch(createBlog({ title, body }));
   };
 
-
   return (
     <form onSubmit={handleSubmit}>
       <input
@@ -30,6 +29,7 @@ const BlogForm = () => {
         value={body}
         onChange={({ target }) => setBody(target.value)}
       />
+      <button>Post</button>
     </form>
   );
 };
