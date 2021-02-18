@@ -1,4 +1,4 @@
-import { countBlogs, getBlogs } from './BlogSelectors';
+import { countBlogs, getBlogs } from './blogSelectors';
 
 describe('blog selectors', () => {
   it('selects the list of blogs from state', () => {
@@ -27,7 +27,6 @@ describe('blog selectors', () => {
     }]);
   });
 
-  // I feel like this could be useful later
   it('selects the number of blogs', () => {
     const state = {
       blogs: [{
