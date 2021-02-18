@@ -27,7 +27,6 @@ describe('blog selectors', () => {
     }]);
   });
 
-  // I feel like this could be useful later
   it('selects the number of blogs', () => {
     const state = {
       blogs: [{
