@@ -8,7 +8,7 @@ const BlogList = () => {
 
   const blogElements = blogs.map(blog => (
     <li key={blog.title}>
-      <Blog {...blog} />
+      <Blog index={index} {...blog} />
     </li>
   ));
 
