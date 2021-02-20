@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { createBlog } from '../../actions/blogActions';
+import { createComment } from '../../actions/commentActions';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const BlogForm = () => {
+const CommentForm = ({ postIndex }) => {
   const dispatch = useDispatch();
 
   const [title, setTitle] = useState('');
@@ -11,27 +12,31 @@ const BlogForm = () => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    dispatch(createBlog({ title, body }));
+    dispatch(createComment({ title, body }, postIndex));
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Title"
+        placeholder="Comment Title"
         value={title}
         onChange={({ target }) => setTitle(target.value)}
       />
 
       <input
         type="text"
-        placeholder="Body"
+        placeholder="Comment Body"
         value={body}
         onChange={({ target }) => setBody(target.value)}
       />
-      <button>Post</button>
+      <button>Post Comment</button>
     </form>
   );
 };
 
-export default BlogForm;
+CommentForm.propTypes = {
+  postIndex: PropTypes.number.isRequired
+};
+
+export default CommentForm;

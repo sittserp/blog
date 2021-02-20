@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { deleteBlog } from '../../actions/blogActions';
-import CommentForm from '../form/CommentForm';
-import CommentList from '../../components/comments/CommentList';
+import { deleteComment } from '../../actions/commentActions';
 
-const Blog = ({ title, body, index }) => {
+const Comment = ({ postIndex, title, body }) => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    dispatch(deleteBlog(title));
+    dispatch(deleteComment({ title, postIndex }));
   };
 
   return (
@@ -19,17 +17,14 @@ const Blog = ({ title, body, index }) => {
         <dd>{body}</dd>
       </dl>
       <button onClick={handleClick}>Delete</button>
-
-      <CommentForm postIndex={index} />
-      <CommentList postIndex={index} />
     </>
   );
 };
 
-Blog.propTypes = {
+Comment.propTypes = {
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired
+  postIndex: PropTypes.number.isRequired
 };
 
-export default Blog;
+export default Comment;
