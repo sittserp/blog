@@ -1,11 +1,11 @@
-export const SET_COMMENT = 'SET_COMMENT';
-export const setComment = (index, comment) => ({
-  type: SET_COMMENT,
-  payload: { index, comment }
+export const CREATE_COMMENT = 'CREATE_COMMENT';
+export const createComment = (comment, postIndex) => ({
+  type: CREATE_COMMENT,
+  payload: { comment, postIndex }
 });
 
 export const DELETE_COMMENT = 'DELETE_COMMENT';
-export const deleteComment = commentTitle => ({
+export const deleteComment = ({ title, postIndex }) => ({
   type: DELETE_COMMENT,
-  payload: commentTitle
+  payload: { title, postIndex }
 });

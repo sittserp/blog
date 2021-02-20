@@ -1,14 +1,21 @@
-import { SET_COMMENT } from '../actions/commentActions';
+import { CREATE_COMMENT, DELETE_COMMENT } from '../actions/commentActions';
 
-const initialState = {
-  comments: []
-};
-
-export default function reducer(state = initialState, action) {
+export default function reducer(state = {}, action) {
   switch(action.type) {
-    case SET_COMMENT: 
-      return { ...state, comments: 
-        [...state.comments, state.comments[action.payload.index]] };
+    case CREATE_COMMENT: 
+      return { 
+        ...state, 
+        [action.payload.postIndex]: [ 
+          ...(state[action.payload.postIndex] || []), 
+          action.payload.comment
+        ] 
+      };
+    case DELETE_COMMENT:
+      return {
+        ...state,
+        [action.payload.postIndex]: state[action.payload.postIndex]
+          .filter(item => item.title !== action.payload.title)
+      };
     default:
       return state;
   }

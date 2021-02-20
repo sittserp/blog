@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { deleteComment } from '../../actions/commentActions';
 
-const Comment = ({ title, body }) => {
+const Comment = ({ postIndex, title, body }) => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    dispatch(deleteComment(title));
+    dispatch(deleteComment({ title, postIndex }));
   };
 
   return (
@@ -23,7 +23,8 @@ const Comment = ({ title, body }) => {
 
 Comment.propTypes = {
   title: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired
+  body: PropTypes.string.isRequired,
+  postIndex: PropTypes.number.isRequired
 };
 
 export default Comment;

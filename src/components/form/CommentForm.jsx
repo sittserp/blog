@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { createComment } from '../../actions/commentActions';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const CommentForm = ({ index }) => {
+const CommentForm = ({ postIndex }) => {
   const dispatch = useDispatch();
 
   const [title, setTitle] = useState('');
@@ -11,7 +12,7 @@ const CommentForm = ({ index }) => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    dispatch(createComment({ title, body, index }));
+    dispatch(createComment({ title, body }, postIndex));
   };
 
   return (
@@ -32,6 +33,10 @@ const CommentForm = ({ index }) => {
       <button>Post Comment</button>
     </form>
   );
+};
+
+CommentForm.propTypes = {
+  postIndex: PropTypes.number.isRequired
 };
 
 export default CommentForm;

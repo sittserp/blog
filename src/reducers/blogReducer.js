@@ -1,4 +1,3 @@
-import { createStore } from 'redux';
 import { CREATE_BLOG, DELETE_BLOG } from '../actions/blogActions';
 
 const initialState = {
@@ -8,7 +7,7 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch(action.type) {
     case CREATE_BLOG:
-      return { ...state, blogs: [...state.blogs, action.payload]}
+      return { ...state, blogs: [...state.blogs, action.payload] };
     case DELETE_BLOG:
       return {
         ...state,

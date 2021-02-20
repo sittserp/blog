@@ -3,12 +3,13 @@ import { getComments } from '../../selectors/commentSelector';
 import { useSelector } from 'react-redux';
 import Comment from './Comment';
 
-const CommentList = () => {
+const CommentList = ({ postIndex }) => {
   const comments = useSelector(getComments);
+  const commentsArray = comments[postIndex] || [];
 
-  const commentElements = comments.map(comment => (
+  const commentElements = commentsArray.map(comment => (
     <li key={comment.title}>
-      <Comment {...comment} />
+      <Comment {...comment} postIndex={postIndex}/>
     </li>
   ));
 
